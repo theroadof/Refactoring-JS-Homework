@@ -16,9 +16,7 @@ function countResultByVoyage(voyage) {
 }
 
 function voyageRisk (voyage) {
-  let result = 1;
-  result += countResultByVoyage(voyage);
-  return Math.max(result, 0);
+  return Math.max(countResultByVoyage(voyage)+1, 0);
 }
 
 function hasChina (history) {

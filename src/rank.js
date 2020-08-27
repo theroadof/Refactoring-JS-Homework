@@ -1,5 +1,5 @@
-function voyageRisk (voyage) {
-  let result = 1;
+function countResultByVoyage(voyage) {
+  let result = 0;
   if (voyage.length > 4) {
     result += 2;
   }
@@ -12,6 +12,12 @@ function voyageRisk (voyage) {
   ].includes(voyage.zone)) {
     result += 4;
   }
+  return result;
+}
+
+function voyageRisk (voyage) {
+  let result = 1;
+  result += countResultByVoyage(voyage);
   return Math.max(result, 0);
 }
 

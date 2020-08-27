@@ -169,3 +169,33 @@ rankTest('voyage:zone:china,length:4 \n',t =>{
 
   t.is(result,'A')
 });
+
+rankTest('voyage:zone:china,length:4 \n'+
+    'history length 10',t =>{
+  const voyage = {
+    zone: 'china',
+    length: 4,
+  };
+  const history = [
+    {
+      zone: 'east-indies',
+      profit: 5,
+    },
+    {
+      zone: 'west-indies',
+      profit: 15,
+    },
+    {
+      zone: 'china',
+      profit: -2,
+    },
+    {
+      zone: 'west-africa',
+      profit: 7,
+    },{},{},{},{},{},{}
+  ];
+
+  const result = rating(voyage,history);
+
+  t.is(result,'A')
+});

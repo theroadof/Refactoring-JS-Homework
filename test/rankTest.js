@@ -158,3 +158,14 @@ rankTest('voyage:zone:china,length:8 \n',t =>{
 
   t.is(result,'A')
 });
+
+rankTest('voyage:zone:china,length:4 \n',t =>{
+  const voyage = {
+    zone: 'china',
+    length: 4,
+  };
+
+  const result = rating(voyage,history);
+
+  t.is(result,'A')
+});

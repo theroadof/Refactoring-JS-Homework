@@ -259,3 +259,33 @@ rankTest('voyage:zone:west-indies,length:15 \n'+
 
   t.is(result,'B')
 });
+
+rankTest('voyage:zone:west-indies,length:15 \n'+
+    'history length 9',t =>{
+  const voyage = {
+    zone: 'west-indies',
+    length: 15,
+  };
+  const history = [
+    {
+      zone: 'east-indies',
+      profit: 5,
+    },
+    {
+      zone: 'west-indies',
+      profit: 15,
+    },
+    {
+      zone: 'china',
+      profit: -2,
+    },
+    {
+      zone: 'west-africa',
+      profit: 7,
+    },{},{},{},{},{}
+  ];
+
+  const result = rating(voyage,history);
+
+  t.is(result,'B')
+});

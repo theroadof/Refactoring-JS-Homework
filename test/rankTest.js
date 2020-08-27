@@ -60,3 +60,14 @@ rankTest('voyage:zone:west-indies,length:15 \n',t =>{
   t.is(result,'B')
 });
 
+rankTest('voyage:zone:west-indies,length:4 \n',t =>{
+  const voyage = {
+    zone: 'west-indies',
+    length: 4,
+  };
+
+  const result = rating(voyage,history);
+
+  t.is(result,'B')
+});
+

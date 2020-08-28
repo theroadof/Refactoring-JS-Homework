@@ -71,10 +71,7 @@ function voyageProfitFactor (voyage, history) {
 }
 
 function rating (voyage, history) {
-  const voyageProfitFactorResult = voyageProfitFactor(voyage, history);
-  const voyageRiskResult = voyageRisk(voyage);
-  const captainHistoryRiskResult = captainHistoryRisk(voyage, history);
-  return (voyageProfitFactorResult * 3 > (voyageRiskResult + captainHistoryRiskResult * 2))?'A':'B';
+  return (voyageProfitFactor(voyage, history) * 3 > (voyageRisk(voyage) + captainHistoryRisk(voyage, history) * 2))?'A':'B';
 }
 
 module.exports = {

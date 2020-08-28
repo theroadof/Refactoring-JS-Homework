@@ -70,8 +70,12 @@ function voyageProfitFactor (voyage, history) {
   return result;
 }
 
+function getRatingFrom(voyage, history) {
+  return (voyageProfitFactor(voyage, history) * 3 > (voyageRisk(voyage) + captainHistoryRisk(voyage, history) * 2)) ? 'A' : 'B';
+}
+
 function rating (voyage, history) {
-  return (voyageProfitFactor(voyage, history) * 3 > (voyageRisk(voyage) + captainHistoryRisk(voyage, history) * 2))?'A':'B';
+  return getRatingFrom(voyage, history);
 }
 
 module.exports = {

@@ -37,14 +37,10 @@ function calculateDeliveryTimeWithoutRush(anOrder) {
 
 function deliveryDate (anOrder, isRush) {
   if (isRush) {
-    let deliveryTime;
-    deliveryTime = calculateDeliveryTimeWithRush(anOrder);
-    return anOrder.placedOn.plusDays(1 + deliveryTime);
+    return anOrder.placedOn.plusDays(1 + calculateDeliveryTimeWithRush(anOrder));
   }
   else {
-    let deliveryTime;
-    deliveryTime = calculateDeliveryTimeWithoutRush(anOrder);
-    return anOrder.placedOn.plusDays(2 + deliveryTime);
+    return anOrder.placedOn.plusDays(2 + calculateDeliveryTimeWithoutRush(anOrder));
   }
 }
 

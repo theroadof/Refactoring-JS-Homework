@@ -16,6 +16,25 @@ function calculateDeliveryTimeWithRush(anOrder) {
   return deliveryTime;
 }
 
+function calculateDeliveryTimeWithoutRush(anOrder) {
+  let deliveryTime = 0;
+  if ([
+    'MA',
+    'CT',
+    'NY',
+  ].includes(anOrder.deliveryState)) {
+    deliveryTime = 2;
+  } else if ([
+    'ME',
+    'NH',
+  ].includes(anOrder.deliveryState)) {
+    deliveryTime = 3;
+  } else {
+    deliveryTime = 4;
+  }
+  return deliveryTime;
+}
+
 function deliveryDate (anOrder, isRush) {
   if (isRush) {
     let deliveryTime;
@@ -24,22 +43,7 @@ function deliveryDate (anOrder, isRush) {
   }
   else {
     let deliveryTime;
-    if ([
-      'MA',
-      'CT',
-      'NY',
-    ].includes(anOrder.deliveryState)) {
-      deliveryTime = 2;
-    }
-    else if ([
-      'ME',
-      'NH',
-    ].includes(anOrder.deliveryState)) {
-      deliveryTime = 3;
-    }
-    else {
-      deliveryTime = 4;
-    }
+    deliveryTime = calculateDeliveryTimeWithoutRush(anOrder);
     return anOrder.placedOn.plusDays(2 + deliveryTime);
   }
 }

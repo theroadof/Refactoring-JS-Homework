@@ -65,3 +65,19 @@ test('should return 4 when deliveryDate given anOrder.deliveryState: MA, isRush:
 
     t.is(result,4);
 });
+
+test('should return 5 when deliveryDate given anOrder.deliveryState: NH, isRush: false',t=>{
+    const anOrder = {
+        deliveryState: 'NH',
+        placedOn: {
+            plusDays: (day)=>{
+                return day;
+            }
+        }
+    };
+    const isRush = false;
+
+    const result = deliveryDate(anOrder,isRush);
+
+    t.is(result,5);
+});

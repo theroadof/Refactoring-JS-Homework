@@ -35,8 +35,12 @@ function calculateDeliveryTimeWithoutRush(anOrder) {
   return deliveryTime;
 }
 
+function getDeliveryDate(isRush, anOrder) {
+  return (isRush) ? anOrder.placedOn.plusDays(1 + calculateDeliveryTimeWithRush(anOrder)) : anOrder.placedOn.plusDays(2 + calculateDeliveryTimeWithoutRush(anOrder));
+}
+
 function deliveryDate (anOrder, isRush) {
-  return (isRush)?anOrder.placedOn.plusDays(1 + calculateDeliveryTimeWithRush(anOrder)):anOrder.placedOn.plusDays(2 + calculateDeliveryTimeWithoutRush(anOrder));
+  return getDeliveryDate(isRush, anOrder);
 }
 
 module.exports = {
